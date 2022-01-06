@@ -2,13 +2,17 @@ import tkinter as tk
 from tkinter.filedialog import askdirectory
 import os
 
+#This script searches through the specified location (including subfolders) in txt files for given 'string' key
+
+
+#pick location/directory
 def select_file_func():
     global file_name
     file_name=askdirectory()
     if file_name:
         tk.Label(main_window,text=f'You have chosen: {file_name}').pack()
     
-
+#choose a key word to search for
 def register_search_phrase():
     global searchfor
     searchfor=phrase.get()
@@ -16,6 +20,7 @@ def register_search_phrase():
         tk.Label(main_window,text=f'You are looking for: {searchfor}').pack()
     return searchfor
 
+#search function with indication whether the key was found or not
 def search_func():
     found=0
     for root, dirs, files in os.walk(file_name):
